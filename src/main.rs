@@ -8,10 +8,10 @@ fn main() {
         .nth(1)
         .expect("find bintablefile as first argument");
 
-    let table = table_lake::BinTable::open(&bintablefile, 1000).unwrap();
+    let mut table = table_lake::BinTable::open(&bintablefile, 1000).unwrap();
 
     let (s, r) = channel();
-    let handle = spawn(|| table.read(s));
+    let handle = spawn(move || table.read(s));
 
     for (s, row) in r {
         println!("{s}: {:?}", row);

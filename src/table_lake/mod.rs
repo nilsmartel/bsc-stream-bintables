@@ -1,11 +1,7 @@
 mod bintable;
-mod database;
 mod tablerow;
 pub use bintable::BinTable;
-pub use database::DatabaseCollection;
 use get_size::GetSize;
-
-pub use database::*;
 
 use std::sync::mpsc::Sender;
 
