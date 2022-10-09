@@ -13,9 +13,14 @@ fn main() {
     let (s, r) = channel();
     let handle = spawn(move || table.read(s));
 
+    eprintln!("start streaming");
+    let mut i = 0;
     for (s, row) in r {
-        println!("{s}: {:?}", row);
+        // println!("{s}: {:?}", row);
+        i += 1;
     }
+
+    eprintln!("read {i} entries");
 
     handle.join().expect("join thread");
 }
