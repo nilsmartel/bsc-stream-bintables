@@ -14,11 +14,8 @@ fn main() {
     let handle = spawn(move || table.read(s));
 
     eprintln!("start streaming");
-    let mut i = 0;
-    for (s, row) in r {
-        // println!("{s}: {:?}", row);
-        i += 1;
-    }
+
+    let i = r.iter().count();
 
     eprintln!("read {i} entries");
 
